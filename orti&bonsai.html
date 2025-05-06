@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orti e Bonsai - Associazione Italiana</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4a8c3a, #2e5e24);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            animation: spin 8s linear infinite;
+        }
+        
+        nav {
+            background-color: #2e5e24;
+            padding: 0.8rem;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1.2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav a:hover {
+            color: #c8e6c9;
+            border-bottom: 2px solid #c8e6c9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            animation: slideUp 0.8s ease-out;
+            border-top: 4px solid #4a8c3a;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .mission {
+            background-color: #f1f8e9;
+            position: relative;
+        }
+        
+        .mission:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://via.placeholder.com/100x100/ffffff/4a8c3a?text=🌿');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 150px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .mission-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            height: 220px;
+            transition: all 0.4s;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(74, 140, 58, 0.8);
+            color: white;
+            padding: 0.8rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .bonsai-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: block;
+            animation: sway 3s ease-in-out infinite;
+        }
+        
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        .leaf-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2e5e24, #1a3a1a);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #4a8c3a;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            color: #4a8c3a;
+            border-color: #4a8c3a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .event-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4a8c3a;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .event-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .event-date {
+            font-weight: bold;
+            color: #4a8c3a;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        </div>
+        <h1>Orti e Bonsai</h1>
+        <p>Associazione Italiana per la Coltivazione e la Conservazione</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#chi-siamo">Chi siamo</a></li>
+            <li><a href="#attivita">Attività</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section class="hero">
+            <img src="data:image/jpeg;base64,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" alt="Orti e Bonsai" class="hero-image">
+        </section>
+        
+        <section id="chi-siamo" class="section mission">
+            <div class="mission-content">
+                <h2>Chi siamo</h2>
+                <p>L'Associazione "Orti e Bonsai" nasce  con lo scopo di promuovere e diffondere la cultura del giardinaggio, dell'orticoltura e dell'arte bonsai in Italia.</p>
+                
+                <p>La nostra missione è preservare le tradizioni colturali italiane mentre esploriamo nuove tecniche e approcci sostenibili.</p>
+            </div>
+        </section>
+        
+        <section id="attivita" class="section">
+            <h2>Le nostre attività</h2>
+            
+            
+
+            <ul>
+                <li>Corsi di coltivazione bonsai per tutti i livelli</li>
+                <li>Workshop di orticoltura biologica</li>
+                <li>Creazione e gestione di orti comunitari</li>
+                <li>Mostre e concorsi nazionali</li>
+                <li>Scambi culturali con associazioni internazionali</li>
+                <li>Pubblicazioni tecniche e divulgative</li>
+            </ul>
+        </section>
+        
+        
+    </div>
+    
+   
+</body>
+</html>

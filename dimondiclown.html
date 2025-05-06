@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associazione Dimondi Clown - Portiamo sorrisi</title>
+    <style>
+        /* Reset e Stili Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            background-color: #fff9e6;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header e Navigazione */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover {
+            background-color: white;
+            color: #ff6b6b;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: url('https://images.unsplash.com/photo-1577623421279-1d47a6d07930?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            position: relative;
+            margin-top: 60px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 107, 107, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #ff6b6b;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Sezioni */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ff6b6b;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: #ffcc5c;
+            margin: 0.5rem auto;
+            border-radius: 5px;
+        }
+        
+        /* Chi Siamo */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .about-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .about-card i {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+        
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+        
+        /* Cosa Facciamo */
+        .activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .activity-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .activity-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .activity-card:hover .activity-img img {
+            transform: scale(1.1);
+        }
+        
+        .activity-content {
+            padding: 1.5rem;
+        }
+        
+        .activity-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+        
+        /* Galleria */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 107, 107, 0.8);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Contatti */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info h3, .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ff6b6b;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            margin-right: 1rem;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: #ff6b6b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: #ffcc5c;
+            color: white;
+        }
+        
+        /* Animazioni */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Dimondi Clown</div>
+            <ul class="nav-links">
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#activities">Cosa Facciamo</a></li>
+                <li><a href="#gallery">Galleria</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Portiamo sorrisi dove c'è bisogno</h1>
+            <p>Associazione di volontariato ONLUS che, attraverso la figura del Clown Dottore, dal 2000 opera sul territorio emiliano portando il naso rosso in differenti contesti socio sanitari e culturali</p>
+            <a href="#about" class="btn">Scopri di più</a>
+        </div>
+    </section>
+
+    <!-- Chi Siamo -->
+    <section id="about" class="section">
+        <h2 class="section-title">Chi Siamo</h2>
+        <div class="about-container">
+            <div class="about-card">
+                <i class="fas fa-heart floating"></i>
+                <h3>La Nostra Missione</h3>
+                <p>Crediamo nel potere terapeutico del sorriso e nell'importanza di portare momenti di gioia a chi vive situazioni difficili.</p>
+            </div>
+            
+            <div class="about-card">
+                <i class="fas fa-users floating"></i>
+                <h3>Il Nostro Team</h3>
+                <p>Un gruppo di volontari appassionati, formati nell'arte del clownterapia per portare allegria con professionalità e sensibilità.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cosa Facciamo -->
+    <section id="activities" class="section" style="background-color: #f9f9f9;">
+        <h2 class="section-title">Cosa Facciamo</h2>
+        <div class="activities">
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUSEhIVFRUXFxgVFxUXGBgWFRcVFxUXFhUXGBcdHSggGBolHhYVITEhJSkrLi4vFx8zODMtNygtLisBCgoKDg0OGxAQGy0lICUtLS0tLy0tLS0tLS0vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKgBKwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAFAAIDBAYBBwj/xABEEAACAAMFBQUFBQUHBAMAAAABAgADEQQFEiExBkFRYXETIoGRoTJSscHRI0JicvAHFIKi4RUkQ2OSsvEzg7PCFjRT/8QAGQEAAgMBAAAAAAAAAAAAAAAAAAMBAgQF/8QAMhEAAgIBAwMCBAQFBQAAAAAAAAECEQMSITEEE0EiURRxodEyQlJhQ5GSwfAjM4HS4f/aAAwDAQACEQMRAD8A0xh1BUkAZ5nqczDCYz+1O0K2eWyhu/SvHCvHqdAN56Rzlub2D9sNrexXsZZAfMEjKlMsuHEnnlrUeV2uezEkmpOZ+kSWmeZj4m1Y9ctaV/W+K0zMnrGyENJmnKyeyyO7iPmdw3mLBkqoBauegHtEcTwidQAQN0tQTwLa/rwipaZmrHMn4aRFtltKijSbC29RPaWyKVZBUkgOhVgwIaoantVA1yiLam2yGtjzrGCqYywoRQTCxZigp3VqQAORjKrLpU1Nd1OJ/wCYes3DmQTvh+pOCjQre7NldH7R7XKYCZhmpXvKwwvTfRhlXqDHsV3W6XOlrMlMGVhUEfrWPmKbNqdP1yg9sltdPsL1Q45RNXlE5Hmp+63PlnWM88V8DIZa5PomsQ2wVUU3MjeAcEnyrA+4b/k2uUs2S1Q33SO8rDVW4Eeu6DNmmiuE072VTpnujPFeqmPk/TaImFDnoTT8p0jttkhG7pxCgNeI49Yq2q0GTMCzfYfITNwO5X+AbfoaHWfBnhqKGpUnjStKxsMbJJJyjtgapduLYR0XL44orzpmBWbgNPxbvMkRNZBhVV4D13nzjN1EuEacK5ZfDwD2KH93aYdZs+0TSeOKfMw/yhYff96/u8h5oFWAwy196axwy18WI6Cp3RJcFj7CzSZNalJaqTvJAzPnWErga+QxihYohDR0GACYGHgxBWHBoAJg0OBiENDsUAEoMdDRFijuKACXFCxQzFCrABJihYojBjtYAJMUcJhmKFWAih+KFWI6wi0BJJijmKIy0cxRIEuKGlobWOVgA8w2s2iFmlgIA06ZlLQ6c2b8I9dI8mvS1s7EM5bPE7nV5h1PTcOQgrtLbSZ9omk+wxs8vkFJBp6nq5jN7vXzjVjgluZpysdLOYrwPnT+sdkDvjqPlDU18IlkDvDqPgIYyiLrElT+Jvn/AEEQ2yXuGm7oMomltmvL/mH4B3a8vWv1EVRd7opTVoK7sj60ERyJ1XHdqBu5/qsXb0lUlE/k9axBdElSwOIjlnQ8id0WT2KtbhqTsyJgBANDoN46HeOvnFO07JT0NFGIbjp4dY9FuZQJYp6aRfM0DWMks8om2PTQaIf2e3S1ms6hhQuS7canLXkBpyjYTBWKF3GslfGn+o0i9SKar3KtVsiRXWcpkTQCaGldGXf48Yo2V2lHsZpJlnKW51Xgjn4GHz0roaEZgjUEaGLUies5SJgGJRR1OnX8p18OUaMWS9mZ8kK3RFbGqyS9ad9ui5J65/wxOrRnLLb8Ew464HpgZtQuiVO9c9d1c4O4wBUmgGZPAQjI7lY7HtGgVb6TrdJlHNJCG0OP8x6y5PkBNPiI0YeM1smC6zLW1a2h8ag6iSowyRy7oBI4sY0AMQyyJw8PDRXrDwYgCbFDg0QVjoaACwGh4aK6GppEhWm8ecWUW+CHJLlkwmQ4TBFcVjucQ4y9g1R9yyHELEIrYoWOIom0WsQ4wq84qloQeAC1HIr4o7iiAJs45UxFihYzxgAkJhViPtDHe1iQH1jlYaJkNM3lAB837cAC0TFA7ocsebMcTfEQCmMDp5R6dtXdlmZSHYM2MvRDV+8KN00BzjFztjbSssz5eGZKzOJT3qDWq6gjeNY2YncaMuRU7A6e0PAfKLQld8+fxiopIPe1B/rBCbOANRvA8ov5IXA1T3wOP0MSzX9jqvyikk7vjr/WHWqdXDyPzitblr9JdvMhpbL+QeQgjs1swzjGWoOlYFWZgzAHMYlr5x6dcUleyACgD6QrLNxVIfhxKTtjrLLKDDnllXQaboc9KVJjt5zcINDTmaU9YzdhQWmeqm0Oyg1fCGVaDPDWgrXiIyaXJWbHNR2PS7AlJaDgo+GcTkxCkwHSHVixme51opWyzYwQCVJBQkb0YUIi4TDGgIKVnUTZIVxmO6eTLkf1zgbf050szWck1m4ZEth/msEOfJSx8OhN2wmk+enNJgH5lwn1QxBa1E+1y5ZzSQhnNzmTMUuWPBRNP8Qi/Dsr4o0NnQKoUCgAAA5AUETAxRsTnvIc8JAB4qQCK+o8ItiKliUGHViKHAwASVjoaISY6DABBbb8MhkRRUzDh1oBkSCeIyMD7deTq+GgOVa6an/mItoVHa2Y/wCYw8BLYxLJRe1YngBoDx5GNCb7doQ4p5KZGt6N7o8zEq3seB8DFrCm8J4p/wAR1ZEo/dQ/lqPnCu9k90X7MCJb6PFhEq31+I+IhrXfK4ephhuyXxYeP9It8RP2RHYh7llb5HvL5RKt6jikDP7NQ6OfQw1rq/H6f1ifiH5iR2F4kGReI4DwMPFuXgfOATXS25l9R8oia75o0I8DB3o+Yh2ZriRo/wB9Xn6R397Tj6Rmf3eeOPmD844TPG5vKsHcxeUHby+GakWhfeHrDu1HvDzjJ/vc0ag+Kxz+0W3gQasDCsyNdj6eYheEZRbzPujzh39qfh9YmsL8kXl9jAWiUK6j0+sPua+JllmYlHaSm/6kuvtDSo3BgND4HKOpd5fJJLzOSmvoIqWuyBah5Ly6a8uo3RaLaGSjexNtzcCvKW2WQBpZBJoO8KUyYbiuhG6PPe1JyO4aesek7GXjgtP7uSTKndyh0x0+zbrXu14HkIJ/tCuBGsDTFRRMkmtQACVGTV5UNfCNC33MsvSzyFWoelIsTtPIxTBzi1Lf7p/QMVZMS1d5q6qd7J8Y9Tu+ZhUDdSPKbAaPLPP1U1+Yj0KbOOAgGlQQIy5+To9JTRbtt9yzVMJI0JrTxESXVKVckpXed54xlZElywBHXpBRbyeUKmWSADiYJNp1JwFf5ozRhJnR6l4IJaTbWQPWgBPSCQJGqkesZS79pLMKqZveFQwAYtiBoQMuVKwVkbSWfTtsB4PVfMnL1hyxNI47mrDMNMR2S2qy90gjdShHnEr2hBm1BzOUHbYa0DJ/dtMtvfRpZ6qQ6/8AvEd0Gs+1t/mogP5JEuo8Cx9YV+26UJRnAqex+1orA1Cg4h4gkQ+4VWXZkxGrEGbMYZhnesyYRyqT4Uizg6IUlZdsT1aafxhR/Cig+tYvq0DbkUdihJzarnLe5LfOCIT8Qiji7LJ7DsULHCEo9fEQ1pbcDEEjscc7SISYaWgAH34/2tm/O/8A42izLbvt4QPvhvtrMPxOf5DFoN328If/AAhP8Quh4kDxTV4eHhA4stNprHnu2e24GKRKHFWrnUHeCD1gTt/taZjmRIf7MZOQMmauYrvAjCUrGjHi8sVPJ4QbW/ZhocTVpQ5mhoKA0403wbuv9oNplkCYQ6D3vbI4Yq+prGLVCM8oTKTnwz/XpDXCLFa5I9vuHbaz2khEJVz91qa79CY02KPmmVanRw6VUg1B3g7o9b/Z1tY9qDSpxXtFGIUFMS6E00qDCMmLTuh0MurZm8huKGYoQaEjB+KGloaWhVgARlIdVXyERmzS/cHlEhhvjBQHLVtTayezsVhmpKGS/ZFa89wUchEcmxXjNYvMslmBOrTsOI8K5k7o1it7zE+MW5M5V3U5n6mOr3F4QtdQoqoxX9zz69NkO8s5rEsmYjpME2yMXWqOG78igyNNVFeukTXsivInofZZGHgVIj0EXjL3sD0qfhAraCxy7RLcJ3XKkKxBpUjKtM6RS/2ETmpeKPk+22FpZ0y1BEQzMxiHjHog2QtZdkmSwlDQs57v8FM2HPSCI/Z9JAoSSaCraVO+g3DTLOEqb8l5Rj4Z5fZn+vlrG0sdrLqCNKCJrV+zx8OKUy4gB3WqA30MULBdlokMVmSmCV11A5imvTWF5VqVjsE9Lphm5ruxzGZmcy6GoFfbypSgrTXlGmEugyDDoD8I7Z7YAiiXJmMoAC4ezpQdXy8YfMaZ96YkgbgMLzPNhTwC+JgjGkLyZNTMlfGy8t5jPQhpmGmEhcJzLPSlGJyyNK55g0gJPsnZFZCIGnNhFZrF17xooC5I1eNKDTPWNvPEhmUvPx4imF3IxEmoovdAFQd1NekZXamzrLtEhlNRVRqDTBMBA/mMPVtCPIZuq7LxEvsj2dnGZxS1XMmnsopCLv7xBPKLcrZNaEzSZzbjNLNnxK9qFgsCCTX0iNlTn5mMujqf1R/pf/Yc54F+V/zX2B67KSApHYysVcjiIHo1V6VMM/sCaqMsm09kCKYDM7SWARRhRhWnMUMXXw8/M/WI1IxD6ndn8oHj6j9a/p+7BZMX6X/P/wAIL6vu0WRJXekOD3DhD5FRX3tKCNNYLyxykmNRcaKxFa0LKDSMLt3MPZy2NMpm4U1Vo0NksMqZZ5XeAOBCSMjXAK1rDMMHoXc5/wCP7bETyep6OP8APc0cu1g6EHpEvbwCs1llpkXrQe0WFd+/9fCI7VeqJRUfFXnipXTfX5RaUV4IjN+TQm0txhptB4A+AikJtY7jilIZZUvZ6z7PkBTtP9oEWlpietdR8IoW1/7xJH4Zh/2D5xaLd9uo+EWaWmiifrLQpx8xALba8jZ7I7oRiYhF6tqfAVMF1EY79qw/usum6cP9jwtQVjHJ0eXPMJNa51r4w+W0QExLLjUZkSuTEbJTrDzEWKAGdZ6QX2UvI2e1yph9nFhfkrd0+VQfCAxMPlmnzgatUC5PoxWhxaA+yNp7WxyXJzw0PVSV+UGMHAjzjBpaNidiDQsUcKHhDGyiCTrPSEGiJmjmOCwCsy3tqWwjlkPMwPn37JU5vjPLveunrGHs0+daz3a099zRfDd5VjTXfsJLcAzbWx/DLAp5nXyEdfTGPLJ7XTY/xu2SzttFX2VHianyH1jtk2mtU3/pS5jfkl1HnnB67tmLJJoUWWT7zgs381QPCNDJYClXHhEOcFwg+Lxx2hBGDvc2x0xNImoy54ghzG8NQU9Iz639MX2qHqKR7TLcHQN8I8125uwSZvaKKJMqaUpRh7Xga184y550tSQjUssuK+QLlbRqfaTyP1iadeMiYpViRUUzHzEY3aK2iUFCquJjXT7o103kkesC7LeLggs1FrnlmFrmfCKwlqV0Ln6ZVZuhd2M92fLYcSgL/wCoMBXw84qXjssjutXdmCMuZ0DUBO4LliGVCcR4VACVeSYn+0BCHdUlhRcwBX7zYacRBGTfqq5RZhDIaPrTHlUV0yoB4GLx/YrI0cmxiXLCBBkKUAA0Eed7cLgny+6E7tcqD70bqz36SBmrDoPiImmW2TMIMyShI0NASOlQYslRVsH2i+7LMAHapkAKpiBNABng6ephn9qyNxmHpKmn/wBY0cm3yPdK+EW5c+SdHXxy+MZXhyfrf0+xo7mP9C+v3Mkt4SzpLnn/ALM0fER0Wyma2a0H/tgfExsm7MCpZadRAK9NqrLJJXEGYfdGZ0roNPGkHYl5k/p9ie9HxFfX7mR2o7e0ShLSyT64wRVU4EaBid8Hbqmiz2WV+8t2cxUCsuIE93IcRWgEZm9dv5syokyyq6V3+X1rA6yrMnnEcVTqW3D9boclpjXPzFN6nfHyNHbdonmns5AIB1J1PPp18os3bZgupxMdSdK9IrWGyqgoNd53mCEuIZZbcBeTNidXgfKaC1isJIxv3V3cT/SALoGz/wD7Er8kz/dLi2X77dfkIs3jPHdCgAZAedCc4bdFmE2e2L2AxLeWQ8/QGLNbUVT9VjO1gPtZd4tNmeXo3tIfxrmB45jxjd3rcIZS0oAMBoMg45cDGRtOWR14QuScWNi1JHhryWU0IoRu9YdJSsbG+LvVmZqZkk5Za5QHe6jTu610hkcqZDwtANniItE9ssroaMpHw84r0hqEPZjhMiRTFh7nniX2rSyEpXEYryUxGgiLTCmnue0bBTgbFLHu4h6k/ONEDAHZWwdhZ0U6kBiOBIGUFzNjK+TUifFCMw8TEGOEZkAEpmnl5RztBwEQl45jgpBbH2G3I1F7NTuAyAA5RoLJdCtnQKepEeUbMXy8t0eacSmoJyqDnT1+MWb72xts1zKJNnTciGjFToWmanwpGiUtKtiFiblpPUrVLWQKzZgQcWYAeB1ih/8AKpC5Sw0w8QMK/wCo5nwBjzWwoK4jmeJNT5mDUpoyT6t+Ea49GvzM2abVTm9lZa9aufl8Iq31a5lolFJjK29e6BRhoQRny8YCSpkEJMyM8s05eTRHp8a8Hkl6u/bvjUgglKHVQunpU+MVmmoCvaNhQ+0aVOEZkAcTp4x6XtHs6k+k1BSaopqQGXgeYzoY84k2iTLmt20pmZDktSpVlI5Znk2UbsORPHaW68HMyYZLLobpP8z4+l7j3dJOJ5YYNiPZhqVEziaZfZBt3+I34YHMhEoqla6k7ya5/SsdvK09tMxqmBaDu1BANSWwkAUBJJ6kw6VTT50h92kKUadJguZOYUyIppvi5JvacoxKzihFRU0z0IBypkRHbRKqenMH1EMEgU6ihrnvrEkUFJG1M8b1PIj6Ui/J2wYe1K/0t8iPnGd7AcIXYxBY1x23XDRZTE7qkAelYykxy7s+9mLZcSaxGln5xalpAyQ1c9mVk7wrlnXQ0yFRoYuzlCopC0zpkB4fD0hXMvcHSLFidW7SVNrQ5q3CmmUQ+CFyQSJ3XzghZ2ckAEknIClST4Qy7bseYaIpPOhpG0uuyS7OO6haZTNzhFOSiuQ9YU4+w1SY27Lq7MB59C+5BoPzcT6Q+8rdhVmOZVS2EcBFe3XvKVsDTQjkVqwxAdaGnhUQJs4Uy5hM9XL5FqOOXA+mUTsiKfLKNmvMzJ1WJ0yGYAow0Bjd7L2cqrMSKzGxYaioWnd8aGvjAG7Nku1mJOL/AGYQqFUEM1TWtSMhlwzjeWGyYRQAU8z484mD2VkSW7omswwfdNOGo6xVviwyZ+bqA3vjut57/GCCoRv8v61ilflqWVJeYVZiqkhRUsaCtAo1MWe4LY8r2kuwSZhQsG31HA5xnHWCi2qdbJLT2pj7VkCgaLQNQ9K0rAtkIyOo1hE4aJNG7DLuRsgtSdopQitfHpSAlmugAnEa5Zbs4Ombh71aU36UipLmYzlWnH5wKTS2CUIt7kN4h0lGWGZi4CgVNAN+u6C2x+y2FhOnYHH3VFSK8WqB5eMKy2Deak8412y8mswIQSrAg60GWJTXccsup4xGpr0ojJBP1vwGFblHDSLs66JgYCWMYOhyFOufrEUy67QNZR8CD8DBTFWivHAsdezzBrLcfwmnwiItTI68N8AEwAjlBEeOOY4mwPF5t6TCuBThXlqa84fds+Y7hWmMVUbzWm4AfrdFA5ZDX4RfushSBXM6w+e6YlSuds1FhtdDhMHbLaYy4Wo+B4RZslrIOFtf1pHOnDyjpY8l7M2EmdFyVOjO2a1QRkWiENDw9KnQKv8A2dk2nvEBZgFA/Ebg3Eeoh8qbF2TNgjKUXaIlCM1Ujz+fs6ZZIcUP6z5xSa7qaCPUZ8hJgowr8R0gDeNgWVmwbD7wzHjwjo4eoU9nyczN0rx7rdGFn2QncMuAA86DOKLSwOI8G+kbrsJTaOvjlDTdVdAD0z+EabMphgq/qsPAT3hGvmXTyirMuJG1QfCIskz0pA2mfhFlbCTB6TcqrotIuybvpEWAKu2yMopn5wb2f2cmTXxHuyx7Tc+A4weuq4RTtJ3dTULoW+ggharcMkWiqNFGWWmkQ5EqJIrJKUS5WQGp3nnGRvXaXHN/dbL35pqC40UjUA7yM6nQUPgany2eqk4UIoaGjGuWv3fCFY7NJkrRERABQYQAeeeprzjLkzpJ6N39DXj6WT3lsiGVsmjPjnviHZqoVSQcQ1JakCbOqEhKUUOAVHtZNTXj1g1OtdEwh6GpArmKc23a5Rm5Mqak9WZSwriGEVXI1FfTWOND4t5HLJL5VwdrpY9LCElNX7Wj2ax2EIoUDQADoBQegiYS6aQDurayW6/agow3gGhPTUGCDX9Z6Vx+AVq/CO/rj7nA7UltRfjNbSzq4h+GniK1jl77WoJbdmjY6ZEgUHFqVOYEYeVftAVckqxqHOdCczXiDr4njELLG6Ldielui7ZHkooVcKlhUKKAk5AmmpOQziheV2S3IZloa1yJFTzpr4xWsslDaxPAEwhAik5pKFSceKtKmpFNY0E4q+o0hzpiFaMVeWzdGxopZTqM2KniBw6Ryx2MVphz4Uz8o10iYTlTp9IeZ7g55eAhMYrIrizR3nj2aKV23ITm4wjh94/SNRY5IUKFWig19D5wMnPMMljJKGZSgx1w14GmcZ/YN7S0yfaLRj+0VMFclbNgcKjSgCjSHwwpRbEZMzk9za2faCWZ3YAP2gYhhTJVArjr7unPMRobNbleoppv4xiLMtHbMYnIaa+lfdQHcoAHWC133gvaZNQA0y0IpQ9dfSLSS8Ck35NOZg4RUtNglzPaQE8aZ+Yzi6GjjNCy/Bn5mzCE1Dso4Gh9coYdm5f/AOj/AMv0g0z55wiDEaUW1M+UkHnvi/YkziogghZREyCIWktE5QEZ+B4RUlGLaRmaNKY6VPZCA3gdxgrZrXA5qEAHp61+cQ4GXNcxw3/1iksNq0Nh1CT0yNTJtHOL8mfGSstugrZ7XzjO40alKzTSZ0WgwIocwd24wAkWrnFyXa+cUaLWQW7ZlWOKU+DipGJfDMEesQS9nHH+KPBT9YLpbBxiT95EMWfIlViX02Ju6BqXVNH+P5ivziVLC+9kP8FPgYsvahED28DfB8Rl9w+GxexItkG/0iaRLVDXKo0qAR5QInXnnlFd7aTviO7lfklYMS8B+1WpjnjLHWjUoeWQy6+him14Iy5DI+BB3iu4gjzECTaucA7feZSihSS5LCnuljnz0OkTCEp8hKUIfsahr5GY4GmlOlOPXjWJLvsk+2E9kAqA0aa3sg8APvHPTzIiG4dkSyiZaWK172AZMa51Yn2emvQ5RtJdpRFEuWAqqKBRkAI1Qwb7mWfUqvSY3aq5jYghE7tEmYlOIAEMBXTeCPKnMQGtkqbKbsJlVcCqNXJ1IqKE6jMdDlG7vi7pdq7MuT9m2IcCDTEpHA0EE5/ZzQFmojgGoDqGAPEVGRizwJ8BDqmkr39zz6RewVBLJxNvJ41z8o7NvYDQxurZd1nZcDyJeHdRQtOYZaEeEZq3bDyWzkz3TkwDjzyPxissLLx6iL5AM68674Dz5+tNDn+v1vjUrsDMOtqQDkhPzEaLZ7Y6z2dhMJM2YNGYAKp4qnHmSeVIhYmWlnilsY+x3ROspliYSBPCs0sgUV2LhBX3qKoPM03QVvCyLOlFRk4Bw54TiplmII/tHu9bUsuVjKEVbEOP3Qw3iufhFS7rI/YoJgpNRQrEEtUgUxVOZrrnGuOyRzpu3uU7sSZLlqswjGooSMwaZKd26lYLynDZ7xA+ZMetHAroCMgfCIpxZVLoRUag6GEx9E2vfcY/VBMLzJtBlGa2pnOZYEuo76sSpKkIKnUZgA8ISXmZhozdmSch92n5oE7Sy5/ZlVCkVBDiow8SGB36U5xojdiWrNZYbR3CwzNKAk1ru13xZsMkggKane3A7+sYW7L5lKiiZMmFlFCi91SeNTTzBi9N2heaMCkS00wqe8R+JvkKRWWRRReOCU2ez2GcHRXUgg7waioND6iOz5tDQZmMl+zq8CZMySPuMCOQcHLzUnxjYSpVOvGKRdqyZx0yaI5cumZzMdpEhhsWKHyXLYwRkTxwgeqGLMuGuKZRNoMyZynQjxyi4hgGhixLcjQwqWH2GxzVyG5ZqOmfhv8AlEkDLNbCGFaHj0OR9IJOP+eW6CMXFUyJSUnaBNSNNxI8jSLdntsVJwzbqfU1+cRgRllHdnQg/SmjRyLbzi5LtddTGWScRFyTaqwp4xiyPyH/AN4O6JDbCBmYELNNNY6s1m0BPQExVYmy0sqjyEHtp4xE1pMU+9wMcVxx4+lK/GHR6diX1UUWu0rEtlRnNF8TuHWKSAsaD9cyYvXbOK/eCykLCoADTWr3mLUJCAkKKVOgAO5ixQhTkIn1M5bQO2/Z+0sKpNQj3BVWP8RyPpF6xX5IsbAzZbdqyBcYUFlQM1RmRTPhwghYkY94hlXcDUMegqaDrnyiltRsw1ro8pwkxVw95SVYaipGYOZzoekbXjx0nAwLJO/9QM2LaOzz69nMLUpi7rCleNQB4QWsslWGIMG6fPhDdnLjs9nkIjGuEAHunNyBiagGZJzrBXs7PWolOTxAwHzJUwvguVDEkyXXOJJkhtUlzKc+zJ81evoYgebh9oFfzAr6tQHwgLEkuf8AdbMRBaZZXMd5fhDyVOhz4aGGdoViCSBLZSJUt/OBl72mSuZbC3ujMn6Rn5t7t90ecKlkiuR8MUpcILTraHY464gaV+FIjs9sYMaio0rFC0WebNspaU2CdmQRowqwpnyqPIx3Z28RaJdMLLMQBZgZSBipqDpnrTUcIdFXHUhEtpUyDae+3ljDgSjg4X3qRSuXEZZxxJ4nSMQJGIA92lQysD6MsXLxkqKdogOtCQDT6QK/fZUslfZHtZAAVIzhXUfhTS3Qzp03Nqy3Z7QEVVEjFhULViKmg1OWsDr0tUxspcsSifXrnpHRa1wggmm4k59aw1LWuddQdeOVR8YX3nXBqXSpPkp2W6UXNgGOuY39N0WZ7ylFMC/6REFpvACCOzWzz2lhMmArJGfAzOS8uJ8uVEnJ7jZSjjRs/wBmNkwyHnEU7RqL+RKgEeJbyjZ4ooWchVCKAAAAAMgANABE6TI0pUqOdOWp2yxSORG88KMzFc29eJ8omih8ySk5RZSziFCh4okFlhdkYUKADoBgzLfKh8D8oUKKTLxB1qHebw/2iIBChRkl+JnRx/hQ8xPZbM8xgiKWY6AfrIc4UKKUTJ0rNpdl3SrIuOcQ83hqq8lHHmfSKV5Xu0w60XhujsKNkIpI50pOT3M9bLwJ7qHLjx6Rbs1mLKg0rXM7hSpPpChROJ6rstmioVRqbtstmVQpAZm3vnU8l0EFRYjSiFVHAKFHpHYUOUTM2QzJE5MyCRxBqPqI6kyduBhQofDdCJqmTSLXNr03RoLrvLcw/rChQTimEZNMODCRURDOtGEgZmvl5woUc97M3rizC3vtGhd0s8rDSqsXXDSYGzKoRkRQ5898Z60l3zYknmawoUc+c3J7nXxY4xVpEPZxwCFCio40lglt+6ymT2sT5bmGJqqeWnlEq2YMSU+zmb1O+nA6NChR0ofhRw8v+5L5kM7tQKOteRyMYq/LepmkKCrAUYFagHUAHStDChRaUU4sMcnGSoEtat5PnCsc/tXCqwFcs6+kKFCFFVZuyTadG1ua5pCGrIZjje/s15Lp51jXWe1HcIUKGJJGOUm3uXpbnU5dYc94AezmeJhQomyKA96Tp7gCVMRW1ZnBbCvFV0r1gxLtJoKJChQvHkbk17EZIpJUf//Z" alt="Clown in ospedale">
+                </div>
+                <div class="activity-content">
+                    <h3>Visite in Ospedale</h3>
+                    <p>Portiamo gioia e divertimento ai bambini ricoverati, aiutandoli ad affrontare con più serenità il periodo di degenza.</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Clown in casa di riposo">
+                </div>
+                <div class="activity-content">
+                    <h3>Case di Riposo</h3>
+                    <p>Regaliamo momenti di allegria agli anziani, creando occasioni di socializzazione e stimolo attraverso il gioco.</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Laboratori creativi">
+                </div>
+                <div class="activity-content">
+                    <h3>Laboratori Creativi</h3>
+                    <p>Organizziamo workshop per insegnare ai bambini l'arte del clown e l'importanza del sorriso come strumento di relazione.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo">Dimondi Clown</div>
+        <p></p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2023 Associazione Dimondi Clown. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        // Animazione al caricamento della pagina
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aggiunge un ritardo alle animazioni delle card
+            const cards = document.querySelectorAll('.about-card, .activity-card, .gallery-item');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Smooth scrolling per i link di navigazione
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
